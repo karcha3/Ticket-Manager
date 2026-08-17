@@ -125,6 +125,3 @@ A couple of things worth knowing:
 
 - Click a column header to sort a table; double-click a row (or select +
   click "Edit") to modify a ticket.
-- If you have an older copy of this project where `tickets.db` sat next
-  to `main.py`, copy that file into the new data folder above (matching
-  your OS) to keep your existing tickets.
