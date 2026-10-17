@@ -125,3 +125,25 @@ A couple of things worth knowing:
 
 - Click a column header to sort a table; double-click a row (or select +
   click "Edit") to modify a ticket.
+
+## Building the installer
+
+The installer wraps `TicketManager.exe` in a standard Windows setup wizard
+(license page, install location, Start menu shortcut, optional desktop
+shortcut, uninstaller).
+
+1. Install [Inno Setup 6.3 or newer](https://jrsoftware.org/isdl.php) on Windows.
+2. Run `build_windows.bat`. It builds the exe and then the installer.
+3. Your installer is at `installer_output\TicketManager-Setup-0.100.exe`.
+
+To change the version, edit `MyAppVersion` at the top of
+`installer\TicketManager.iss`. Do not change `AppId`.
+
+Tickets are stored in `%APPDATA%\TicketManager`, so uninstalling or
+upgrading never deletes your data.
+
+## License
+
+Copyright (c) 2026 Karcha Studios. All rights reserved. See `LICENSE.txt`.
+The source is visible for viewing only; copying, modifying and
+redistributing it is not permitted.
