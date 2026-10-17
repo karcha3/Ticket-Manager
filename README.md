@@ -1,149 +1,83 @@
 # Ticket Manager
 
-A desktop ticket-management app built with **PySide6** (Qt for Python),
-structured as a proper Qt Creator project.
+**A Windows app for keeping track of the event tickets you hold.**
+Record who each ticket is for, the event, the seat, the date, the price and
+the status, all in one searchable table.
 
-## Project layout
+> **Beta (V0.100).** You may run into bugs. See [Known issues](#known-issues).
 
-```
-ticket_manager.pyproject   ← open this in Qt Creator
-main.py                    ← entry point
-main_window.py             ← main window logic (tabs, table, search, export)
-ticket_dialog.py           ← add/edit ticket dialog logic
-database.py                ← SQLite storage + CSV export
-styles.py                  ← light / dark QSS themes
-ui_loader.py                ← tiny helper that loads .ui files at runtime
-pickers.py                  ← calendar & clock-dial popup pickers
-resources.py                ← resolves bundled files + writable data folder
-                               (works both from source and from the built .exe)
-ui/mainwindow.ui           ← toolbar + tabs + status bar layout (edit in Designer)
-ui/ticketdialog.ui         ← add/edit ticket form layout (edit in Designer)
-assets/icon.png             ← app icon (window icon)
-assets/icon.ico             ← app icon (Windows exe icon)
-ticket_manager.spec         ← PyInstaller build config
-build_windows.bat           ← one-click build script for Windows
-requirements.txt
-requirements-build.txt      ← adds PyInstaller, only needed to build the exe
-```
+Website: https://karcha3.github.io/ticketmanager
 
-## Opening in Qt Creator
+## Download
 
-1. Open Qt Creator → **File > Open File or Project...**
-2. Select `ticket_manager.pyproject`.
-3. Qt Creator will list all the project files in the sidebar. Double-click
-   `ui/mainwindow.ui` or `ui/ticketdialog.ui` to edit the layouts visually
-   in the built-in **Designer**.
-4. To run it, set up a Python interpreter for the project (Qt Creator will
-   prompt you), or just run it from a terminal as below.
+| File | What it is |
+| --- | --- |
+| [**TicketManager-Setup-0.100.exe**](https://github.com/karcha3/Ticket-Manager/releases/download/V0.100-installer/TicketManager-Setup-0.100.exe) | The full installer (recommended). Setup wizard, Start menu shortcut, optional desktop shortcut and uninstaller. |
+| [TicketManager.exe](https://github.com/karcha3/Ticket-Manager/releases/download/V0.100/TicketManager.exe) | Portable version (not the full installation). Just run it, no install needed. |
 
-## Running from the command line
-
-```bash
-pip install -r requirements.txt
-python main.py
-```
-
-Requires Python 3.9+.
-
-The `.ui` files are loaded at runtime with `QUiLoader`, so there is no
-build/compile step — editing a `.ui` file in Designer and re-running the
-app is enough to see your changes.
-
-## Building a Windows .exe
-
-You need to build **on Windows** — PyInstaller doesn't cross-compile, so
-running the build on Linux/macOS would not produce a working Windows exe.
-
-**Easiest way:**
-
-1. Copy this whole folder onto a Windows machine (with Python 3.9+ installed).
-2. Double-click `build_windows.bat` (or run it from Command Prompt).
-   It creates a virtual environment, installs everything, and runs
-   PyInstaller for you.
-3. When it finishes, your app is at `dist\TicketManager.exe` — a single
-   file with the ticket icon baked in, no console window, no Python
-   install required on the machine you copy it to.
-
-**Manual way**, if you'd rather run the steps yourself:
-
-```powershell
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-pip install -r requirements-build.txt
-pyinstaller ticket_manager.spec
-```
-
-The resulting `dist\TicketManager.exe` is portable — copy it anywhere,
-or zip up the whole `dist` folder to share with someone else. It doesn't
-need Qt Creator, Python, or PySide6 installed on the target machine.
-
-A couple of things worth knowing:
-- The **first run** of a onefile exe is a bit slower than later runs,
-  since it unpacks itself into a temp folder each time it starts.
-- If you ever want a faster-starting build instead (a folder of files
-  rather than one exe), run `pyinstaller ticket_manager.spec --onedir`
-  style tweaks, or ask and I can add a onedir variant.
-- macOS/Linux builds work the same way (`pyinstaller ticket_manager.spec`
-  on that OS gives you a `.app` or a Linux binary respectively) — just
-  skip `build_windows.bat` and run the manual commands above on that OS.
+Requires Windows 10 or 11.
 
 ## Features
 
-- **Fields**: venue type (dropdown), ticket type (dropdown), first/last
-  name, venue/event name (dropdown, pre-filled with venues you've already
-  used, editable for new ones), location, date, time, seat/section, price,
-  status (dropdown), notes.
-- **Date & time pickers**: the date field has both the standard calendar
-  dropdown and a dedicated 📅 button that opens a full calendar popup —
-  click a day to set it. The time field has a dropdown of 30-minute slots
-  plus a 🕐 button that opens a clock-style popup with an hour dial and a
-  minute dial; turn them and hit Done.
-- **Duplicate**: select a ticket and click "⧉ Duplicate" to open a new
-  ticket pre-filled with all of its details — handy for buying several
-  tickets to the same event, just tweak the name/seat and save.
-- **Tabs per venue**: an "All Venues" tab plus one auto-generated tab per
-  distinct venue name, so you can quickly flip between events. Tabs update
-  automatically as you add/edit tickets. Adding a ticket while on a venue
-  tab pre-fills that venue for you.
-- **Search**: live filter across all fields, scoped to the active tab.
-- **Export**: "Export CSV" exports whatever is currently visible in the
-  active tab (respecting the search filter and venue tab), so you can
-  export everything or just one event's tickets.
-- **Persistence**: SQLite database (`tickets.db`) stored in a per-user
-  data folder (`%APPDATA%\TicketManager` on Windows, `~/Library/Application
-  Support/TicketManager` on macOS, `~/.local/share/TicketManager` on Linux)
-  — every add/edit/delete commits immediately, and the connection is
-  closed cleanly on exit. This location is used both when running from
-  source and from the built exe, so your data survives reinstalling or
-  moving the app.
-- **App icon**: a ticket icon is used for the window and, once built, for
-  the .exe file itself.
-- **Dark mode**: toggle button in the toolbar, remembered between launches.
+- Add, edit, duplicate and delete tickets
+- Fields for first and last name, venue type, ticket type, venue or event,
+  location, date, time, seat or section, price, status and notes
+- Calendar and clock pickers for dates and times
+- A tab for each venue, created automatically as you add tickets
+- Live search across all fields
+- Click a column header to sort, and double-click a row to edit it
+- Export to CSV (exports what you currently see, including your search and
+  the active venue tab)
+- Light and dark mode, remembered between launches
+- The total value of your active tickets shown in the status bar
 
-## Notes
+## Your data
 
-- Click a column header to sort a table; double-click a row (or select +
-  click "Edit") to modify a ticket.
+Tickets are stored locally on your PC in `%APPDATA%\TicketManager`. Nothing
+is uploaded. Uninstalling or updating the app does not delete your tickets.
+Use **Export CSV** to make a backup.
 
-## Building the installer
+## Known issues
 
-The installer wraps `TicketManager.exe` in a standard Windows setup wizard
-(license page, install location, Start menu shortcut, optional desktop
-shortcut, uninstaller).
+- The **Duplicate** button is a little broken and may not always behave as
+  expected.
+- Windows SmartScreen may show a "Windows protected your PC" warning the
+  first time you run the app. Click **More info**, then **Run anyway**.
+- The first launch of the portable version can be slow, because it unpacks
+  itself each time it starts.
 
-1. Install [Inno Setup 6.3 or newer](https://jrsoftware.org/isdl.php) on Windows.
-2. Run `build_windows.bat`. It builds the exe and then the installer.
-3. Your installer is at `installer_output\TicketManager-Setup-0.100.exe`.
+## Building from source (for the owner)
 
-To change the version, edit `MyAppVersion` at the top of
+Requires Windows and Python 3.12 (64-bit) with "Add python.exe to PATH"
+ticked. To build the installer you also need
+[Inno Setup 6.3 or newer](https://jrsoftware.org/isdl.php).
+
+1. Put the project files in one folder (the `.ui` files go in a `ui` folder).
+2. Double-click `build_windows.bat`.
+3. The exe is created at `dist\TicketManager.exe`, and the installer at
+   `installer_output\TicketManager-Setup-0.100.exe`.
+
+To run from source instead: `pip install -r requirements.txt`, then
+`python main.py`. To change the version, edit `MyAppVersion` at the top of
 `installer\TicketManager.iss`. Do not change `AppId`.
 
-Tickets are stored in `%APPDATA%\TicketManager`, so uninstalling or
-upgrading never deletes your data.
+### Project layout
+
+```
+main.py             entry point
+main_window.py      main window logic (tabs, table, search, export)
+ticket_dialog.py    add/edit ticket dialog
+database.py         SQLite storage and CSV export
+styles.py           light and dark themes
+pickers.py          calendar and clock popups
+resources.py        file paths (source and built exe)
+ui/                 Qt Designer layouts
+assets/             app icons
+installer/          Inno Setup installer script
+```
 
 ## License
 
-Copyright (c) 2026 Karcha Studios. All rights reserved. See `LICENSE.txt`.
-The source is visible for viewing only; copying, modifying and
-redistributing it is not permitted.
+Copyright (c) 2026 Karcha Studios. All rights reserved. See
+[LICENSE.txt](LICENSE.txt). The source is visible for viewing only; copying,
+modifying and redistributing it is not permitted.
