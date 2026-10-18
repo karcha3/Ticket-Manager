@@ -4,16 +4,16 @@
 Record who each ticket is for, the event, the seat, the date, the price and
 the status, all in one searchable table.
 
-Website: https://karcha3.github.io/ticketmanager
+Website: https://karcha3.github.io/ticketmanager ([Privacy](https://karcha3.github.io/ticketmanager/privacy.html) · [Terms](https://karcha3.github.io/ticketmanager/terms.html))
 
 ## Download
 
 | File | What it is |
 | --- | --- |
 | [**TicketManager-Setup-1.0.exe**](https://github.com/karcha3/Ticket-Manager/releases/latest/download/TicketManager-Setup-1.0.exe) | The full installer (recommended). Setup wizard, Start menu shortcut, optional desktop shortcut and uninstaller. |
-| [TicketManager.exe](https://github.com/karcha3/Ticket-Manager/releases/latest/download/TicketManager.exe) | Portable version (not the full installation). Just run it, no install needed. |
+| [TicketManager-Portable-1.0.exe](https://github.com/karcha3/Ticket-Manager/releases/latest/download/TicketManager-Portable-1.0.exe) | Portable version (not the full installation). Just run it, no install needed. |
 
-Requires Windows 10 or 11.
+Requires Windows 10 or 11 (64-bit).
 
 ## Features
 
@@ -27,7 +27,8 @@ Requires Windows 10 or 11.
 - Export to CSV (exports what you currently see, including your search and
   the active venue tab)
 - Light and dark mode, remembered between launches
-- The total value of your active tickets shown in the status bar
+- The status bar shows your ticket count and the total price of your tickets,
+  not counting cancelled or refunded ones
 
 ## Your data
 
