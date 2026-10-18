@@ -4,16 +4,14 @@
 Record who each ticket is for, the event, the seat, the date, the price and
 the status, all in one searchable table.
 
-> **Beta (V0.100).** You may run into bugs. See [Known issues](#known-issues).
-
 Website: https://karcha3.github.io/ticketmanager
 
 ## Download
 
 | File | What it is |
 | --- | --- |
-| [**TicketManager-Setup-0.100.exe**](https://github.com/karcha3/Ticket-Manager/releases/download/V0.100-installer/TicketManager-Setup-0.100.exe) | The full installer (recommended). Setup wizard, Start menu shortcut, optional desktop shortcut and uninstaller. |
-| [TicketManager.exe](https://github.com/karcha3/Ticket-Manager/releases/download/V0.100/TicketManager.exe) | Portable version (not the full installation). Just run it, no install needed. |
+| [**TicketManager-Setup-1.0.exe**](https://github.com/karcha3/Ticket-Manager/releases/latest/download/TicketManager-Setup-1.0.exe) | The full installer (recommended). Setup wizard, Start menu shortcut, optional desktop shortcut and uninstaller. |
+| [TicketManager.exe](https://github.com/karcha3/Ticket-Manager/releases/latest/download/TicketManager.exe) | Portable version (not the full installation). Just run it, no install needed. |
 
 Requires Windows 10 or 11.
 
@@ -37,10 +35,8 @@ Tickets are stored locally on your PC in `%APPDATA%\TicketManager`. Nothing
 is uploaded. Uninstalling or updating the app does not delete your tickets.
 Use **Export CSV** to make a backup.
 
-## Known issues
+## Good to know
 
-- The **Duplicate** button is a little broken and may not always behave as
-  expected.
 - Windows SmartScreen may show a "Windows protected your PC" warning the
   first time you run the app. Click **More info**, then **Run anyway**.
 - The first launch of the portable version can be slow, because it unpacks
@@ -55,7 +51,7 @@ ticked. To build the installer you also need
 1. Put the project files in one folder (the `.ui` files go in a `ui` folder).
 2. Double-click `build_windows.bat`.
 3. The exe is created at `dist\TicketManager.exe`, and the installer at
-   `installer_output\TicketManager-Setup-0.100.exe`.
+   `installer_output\TicketManager-Setup-1.0.exe`.
 
 To run from source instead: `pip install -r requirements.txt`, then
 `python main.py`. To change the version, edit `MyAppVersion` at the top of

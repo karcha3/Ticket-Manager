@@ -25,6 +25,9 @@ def main():
     app = QApplication(sys.argv)
     app.setApplicationName(APP_NAME)
     app.setOrganizationName(ORG_NAME)
+    # Fusion draws consistently under custom themes (the default Windows
+    # style ignores parts of the dark palette).
+    app.setStyle("Fusion")
     app.setFont(QFont("Segoe UI", 10))
     app.setWindowIcon(QIcon(resource_path("assets", "icon.png")))
 

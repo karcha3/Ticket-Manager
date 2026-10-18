@@ -1,5 +1,42 @@
 """Light & dark QSS themes for the Ticket Manager app."""
 
+from PySide6.QtGui import QColor, QPalette
+
+
+def build_palette(dark: bool) -> QPalette:
+    """A matching QPalette. The stylesheet alone does not reach every
+    widget (dials, header sort arrows, spin box arrows, native dialogs),
+    so without this they keep light-theme colors on a dark window."""
+    if dark:
+        c = dict(window="#1b1d23", base="#262a33", alt="#1f222a", text="#e7e9ee",
+                 dim="#9096a3", button="#262a33", accent="#7c8cff",
+                 border="#333844", tip="#262a33")
+    else:
+        c = dict(window="#f4f5f8", base="#ffffff", alt="#f7f8fb", text="#1e2028",
+                 dim="#666c7a", button="#ffffff", accent="#5865f2",
+                 border="#e1e3ea", tip="#ffffff")
+    p = QPalette()
+    p.setColor(QPalette.Window, QColor(c["window"]))
+    p.setColor(QPalette.WindowText, QColor(c["text"]))
+    p.setColor(QPalette.Base, QColor(c["base"]))
+    p.setColor(QPalette.AlternateBase, QColor(c["alt"]))
+    p.setColor(QPalette.Text, QColor(c["text"]))
+    p.setColor(QPalette.Button, QColor(c["button"]))
+    p.setColor(QPalette.ButtonText, QColor(c["text"]))
+    p.setColor(QPalette.BrightText, QColor("#ffffff"))
+    p.setColor(QPalette.Highlight, QColor(c["accent"]))
+    p.setColor(QPalette.HighlightedText, QColor("#ffffff"))
+    p.setColor(QPalette.ToolTipBase, QColor(c["tip"]))
+    p.setColor(QPalette.ToolTipText, QColor(c["text"]))
+    p.setColor(QPalette.PlaceholderText, QColor(c["dim"]))
+    p.setColor(QPalette.Link, QColor(c["accent"]))
+    p.setColor(QPalette.Mid, QColor(c["border"]))
+    p.setColor(QPalette.Dark, QColor(c["border"]))
+    p.setColor(QPalette.Light, QColor(c["base"]))
+    for role in (QPalette.WindowText, QPalette.Text, QPalette.ButtonText):
+        p.setColor(QPalette.Disabled, role, QColor(c["dim"]))
+    return p
+
 
 def build_stylesheet(dark: bool) -> str:
     if dark:
@@ -98,7 +135,7 @@ def build_stylesheet(dark: bool) -> str:
     QPushButton#primaryButton:hover, QPushButton#addButton:hover {{ background: {accent_hover}; }}
 
     QPushButton#secondaryButton, QPushButton#editButton,
-    QPushButton#themeButton, QPushButton#exportButton {{
+    QPushButton#themeButton, QPushButton#exportButton, QPushButton#duplicateButton {{
         background: transparent;
         color: {text};
         border: 1px solid {border};
@@ -108,7 +145,8 @@ def build_stylesheet(dark: bool) -> str:
         font-weight: 500;
     }}
     QPushButton#secondaryButton:hover, QPushButton#editButton:hover,
-    QPushButton#themeButton:hover, QPushButton#exportButton:hover {{
+    QPushButton#themeButton:hover, QPushButton#exportButton:hover,
+    QPushButton#duplicateButton:hover {{
         background: {bg_card}; border: 1px solid {accent};
     }}
 
@@ -220,6 +258,58 @@ def build_stylesheet(dark: bool) -> str:
         font-size: 14px;
     }}
     QToolButton:hover {{ border: 1px solid {accent}; background: {select_bg}; }}
+
+    QPushButton:disabled {{
+        color: {text_dim};
+        border: 1px solid {border};
+        background: transparent;
+    }}
+
+    QMessageBox QPushButton {{
+        min-width: 80px;
+        padding: 7px 16px;
+        border-radius: 8px;
+        border: 1px solid {border};
+        background: {bg_card};
+        color: {text};
+    }}
+    QMessageBox QPushButton:hover {{ border: 1px solid {accent}; }}
+    QMessageBox QPushButton:default {{
+        background: {accent};
+        color: #ffffff;
+        border: none;
+        font-weight: 600;
+    }}
+
+    QMenu {{
+        background: {bg_card};
+        color: {text};
+        border: 1px solid {border};
+        padding: 4px;
+    }}
+    QMenu::item {{ padding: 6px 22px; border-radius: 6px; }}
+    QMenu::item:selected {{ background: {select_bg}; color: {text}; }}
+    QMenu::item:disabled {{ color: {text_dim}; }}
+    QMenu::separator {{ height: 1px; background: {border}; margin: 4px 6px; }}
+
+    QToolTip {{
+        background: {bg_card};
+        color: {text};
+        border: 1px solid {border};
+        padding: 4px 6px;
+    }}
+
+    QCalendarWidget QToolButton {{
+        background: transparent;
+        color: {text};
+        border: none;
+        padding: 4px 8px;
+    }}
+    QCalendarWidget QToolButton:hover {{ background: {select_bg}; border-radius: 6px; }}
+    QCalendarWidget QMenu {{ background: {bg_card}; color: {text}; }}
+    QCalendarWidget QSpinBox {{ background: {bg_card}; color: {text}; }}
+
+    QAbstractScrollArea::corner {{ background: {bg_card}; }}
 
     QWidget#pickerPopup {{
         background: {bg_elevated};

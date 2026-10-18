@@ -9,7 +9,7 @@ from PySide6.QtWidgets import (
 )
 
 from database import Database
-from styles import build_stylesheet
+from styles import build_stylesheet, build_palette
 from ticket_dialog import TicketDialog
 from ui_loader import load_ui
 
@@ -316,7 +316,16 @@ class MainWindow(QMainWindow):
     def apply_theme(self, dark: bool):
         self.settings.setValue("dark_mode", dark)
         self.theme_button.setText("☀  Light Mode" if dark else "🌙  Dark Mode")
-        QApplication.instance().setStyleSheet(build_stylesheet(dark))
+        app = QApplication.instance()
+        # Make the window title bar follow the theme too (needs Qt 6.8+;
+        # older versions simply skip this).
+        try:
+            app.styleHints().setColorScheme(
+                Qt.ColorScheme.Dark if dark else Qt.ColorScheme.Light)
+        except AttributeError:
+            pass
+        app.setPalette(build_palette(dark))
+        app.setStyleSheet(build_stylesheet(dark))
 
     # ---------------------------------------------------------- lifecycle
     def closeEvent(self, event):
