@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- No permissions: the app has no internet access and uploads nothing. -->
+    <!-- No permissions requested: the app has no internet access and uploads nothing. -->
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="Ticket Manager"
         android:theme="@android:style/Theme.Material.Light.NoActionBar">
+        <!-- Lets Google Play services download the scanner when the app is installed. -->
+        <meta-data android:name="com.google.mlkit.vision.DEPENDENCIES" android:value="barcode_ui" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
