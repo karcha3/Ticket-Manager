@@ -13,14 +13,14 @@ Website: https://karcha3.github.io/ticketmanager ·
 
 ## Download
 
-Get the latest files from the [Releases page](https://github.com/karcha3/Ticket-Manager/releases/latest).
+Get the latest files from the [Releases page](https://github.com/karcha3/Ticket-Manager/releases/).
 
 | App | File | Notes |
 | --- | --- | --- |
-| Windows (installer, recommended) | [TicketManager-Setup-1.0.exe](https://github.com/karcha3/Ticket-Manager/releases/latest/download/TicketManager-Setup-1.0.exe) | Setup wizard, Start menu shortcut, optional desktop shortcut, uninstaller. Windows 10 or 11, 64-bit. |
-| Windows (portable) | [TicketManager-Portable-1.0.exe](https://github.com/karcha3/Ticket-Manager/releases/latest/download/TicketManager-Portable-1.0.exe) | Runs without installing. Not the full installation. |
-| Linux | [TicketManager-1.0-x86_64.AppImage](https://github.com/karcha3/Ticket-Manager/releases/latest/download/TicketManager-1.0-x86_64.AppImage) | 64-bit PCs. See [Linux](#linux). |
-| Android | [TicketManager-Android-1.0.apk](https://github.com/karcha3/Ticket-Manager/releases/latest/download/TicketManager-Android-1.0.apk) | Android 8.0 or newer. See [Android](#android). |
+| Windows (installer, recommended) | [TicketManager-Setup-Windows-1.0.exe](https://github.com/karcha3/Ticket-Manager/releases/download/V1.0-Build1.2/TicketManager-Windows-Setup-1.0.exe) | Setup wizard, Start menu shortcut, optional desktop shortcut, uninstaller. Windows 10 or 11, 64-bit. |
+| Windows (portable) | [TicketManager-Portable-Windows-1.0.exe](https://github.com/karcha3/Ticket-Manager/releases/download/V1.0-Build1.2/TicketManager-Windows-Portable-1.0.exe) | Runs without installing. Not the full installation. |
+| Linux | [TicketManager-Linux-1.0-x86_64.AppImage](https://github.com/karcha3/Ticket-Manager/releases/download/V1.0-Build1.2/TicketManager-Linux-1.0-x86_64.AppImage) | 64-bit PCs. See [Linux](#linux). |
+| Android | [TicketManager-Android-1.0.apk](https://github.com/karcha3/Ticket-Manager/releases/download/V1.0-Build1.2/Ticket-Manager-Android-Phone_1.0.apk) | Android 8.0 or newer. See [Android](#android). |
 
 ## Features (Windows and Linux)
 
