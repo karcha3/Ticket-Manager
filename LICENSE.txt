@@ -1,0 +1,64 @@
+TICKET MANAGER - PROPRIETARY SOFTWARE LICENSE
+
+Copyright (c) 2026 Karcha Studios. All rights reserved.
+
+1. OWNERSHIP
+   Ticket Manager (the "Software") means the Ticket Manager app for Windows
+   and the Ticket Manager app for Android, including their source code, user
+   interface, design, icons and documentation. The Software is owned by
+   Karcha Studios ("the Owner"). The Software is licensed, not sold.
+
+2. WHAT YOU MAY DO
+   You may download, install and use the compiled Software for your own
+   personal, non-commercial use on devices that you own or control. For
+   Windows this means the installer or the portable TicketManager exe. For
+   Android this means the app package (APK) or the app installed from an app
+   store.
+
+3. WHAT YOU MAY NOT DO
+   Without the Owner's prior written permission, you may not:
+   a) copy, fork, clone or reproduce the Software or any part of its
+      source code, except for the copy made by installing it as described
+      in section 2;
+   b) modify, adapt, translate or create derivative works of the Software;
+   c) redistribute, sell, rent, lease, sublicense, publish or host the
+      Software or any part of it, in original or modified form;
+   d) reverse engineer, decompile or disassemble the Software, except to
+      the extent that applicable law expressly allows this despite this
+      restriction;
+   e) remove or alter any copyright, license or ownership notice;
+   f) use the Software, its name, icon or design to build a competing
+      product.
+
+4. SOURCE CODE VISIBILITY
+   If the source code is visible online (for example in a public
+   repository), it is made available for viewing only. Viewing it does not
+   give you any license to copy, reuse or redistribute it.
+
+5. BETA SOFTWARE
+   The Software may be an early (beta) version and may contain bugs. It is
+   provided "AS IS", without warranty of any kind, express or implied,
+   including merchantability, fitness for a particular purpose and
+   non-infringement. Back up any ticket data you care about (for example
+   with Export CSV).
+
+6. LIMITATION OF LIABILITY
+   To the maximum extent permitted by law, the Owner is not liable for any
+   indirect, incidental or consequential damages, or for loss of data,
+   arising from the use of or inability to use the Software.
+
+7. TERMINATION
+   This license ends automatically if you break any of its terms. When it
+   ends you must stop using the Software and delete all copies.
+
+8. THIRD-PARTY SOFTWARE
+   The Software includes or uses third-party components, such as Qt for
+   Python, AndroidX libraries, ZXing and Google's code scanner. They are
+   licensed under their own terms, and nothing in this license limits any
+   rights you have under those terms.
+
+9. CONTACT
+   To request permission for anything not allowed above, contact the Owner
+   through https://github.com/karcha3/Ticket-Manager
+
+By installing or using the Software you agree to these terms.

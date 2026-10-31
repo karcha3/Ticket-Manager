@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Ticket Manager
+Comment=Keep track of the event tickets you hold
+Exec=TicketManager
+Icon=ticketmanager
+Categories=Office;Utility;
+Terminal=false
